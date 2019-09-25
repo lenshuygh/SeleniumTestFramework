@@ -1,7 +1,10 @@
 package be.lens;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PathPage {
     static String url = "https://www.pluralsight.com/paths";
@@ -12,21 +15,14 @@ public class PathPage {
     }
 
     public void goToJavaPath() {
-        /*
-        from IDE recording
+        String elem = "//*[@id=\"pathContent\"]/div[128]/a/div/div[2]";
 
-        driver.findElement(By.cssSelector(".header_nav_primary")).click();
-        driver.findElement(By.linkText("View all paths >")).click();
-        driver.findElement(By.cssSelector(".item:nth-child(128) .item-text")).click();
-         */
+        WebElement myelement = Browser.driver.findElement(By.xpath(elem));
+        JavascriptExecutor jse2 = (JavascriptExecutor) Browser.driver;
+        jse2.executeScript("arguments[0].scrollIntoView()", myelement);
+        jse2.executeScript("window.scrollBy(0,-250)");
 
-        /*Browser.driver.findElement(By.cssSelector(".header_nav_primary")).click();
-        Browser.driver.findElement(By.linkText("View all paths >")).click();*/
-
-        //Browser.driver.findElement(By.linkText("Java")).click();
-
-        Browser.driver.findElements(By.xpath("//*[@id=\"pathContent\"]/div[128]/a/div/div[1]/img")).get(0).click();
-
+        Browser.driver.findElement(By.xpath(elem)).click();
     }
 
     public boolean isAt() {
