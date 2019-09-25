@@ -5,7 +5,7 @@ public class Pages {
         return new HomePage();
     }
 
-    public static PathPage pathPages() {
-        return new PathPage();
+    public static PathPages pathPages() {
+        return new PathPages();
     }
 }
